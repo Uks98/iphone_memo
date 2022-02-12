@@ -3,7 +3,7 @@ class Memo {
   String? memo;
   String? image;
   int? id;
-  int? date;
+  String? date;
 
   Memo({this.title, this.memo, this.image, this.id, this.date});
 

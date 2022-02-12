@@ -25,35 +25,32 @@ class _AddPageState extends State<AddPage> {
       },
       child: Scaffold(
         backgroundColor: DoryColors.primaryMeterialColor,
-        appBar: CupertinoNavigationBar(
-          automaticallyImplyMiddle: true,
-          backgroundColor: DoryColors.primaryMeterialColor,
-          trailing: TextButton(
+        appBar: AppBar(
+          backgroundColor: DoryColors.primaryColor,
+          actions: [
+            IconButton(
+              onPressed: (){},
+              icon: const Icon(CupertinoIcons.camera_fill,color: Color(DoryColors.textColor),),
+            ),
+            TextButton(
               onPressed: () {
                 if(titleController.text.isEmpty){
+                  return;
+                }
+                if(memoController.text.isEmpty){
                   return;
                 }
                 memo.title = titleController.text;
                 memo.memo = memoController.text;
                 Navigator.of(context).pop(memo);
               },
-          child: const Text("완료",
-            style: TextStyle(
-              color: Color(DoryColors.textColor),
-              fontSize: 18,
-            ),),
-          ),
-          leading: const Padding(
-            padding: EdgeInsets.only(top: 7.0),
-            child: Text(
-              "메모",
-              style: TextStyle(
-                color: Color(DoryColors.textColor),
-                fontSize: 18,
-              ),
-              textAlign: TextAlign.center,
+              child: const Text("완료",
+                style: TextStyle(
+                  color: Color(DoryColors.textColor),
+                  fontSize: 18,
+                ),),
             ),
-          ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -67,12 +64,12 @@ class _AddPageState extends State<AddPage> {
                   style: const TextStyle(
                     height: 2,
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 22,
                   ),
                   maxLines: 10,
                   cursorColor: Color(DoryColors.textColor),
                   decoration:  InputDecoration(
-                    hintText: "${memo.date}일",
+                    hintText: "${memo.date}",
                     hintStyle: TextStyle(color: Colors.grey[600]),
                     focusColor: Colors.white,
                     border: UnderlineInputBorder(
@@ -86,12 +83,10 @@ class _AddPageState extends State<AddPage> {
                     color: Colors.white,
                     fontSize: 20,
                   ),
-                  maxLines: 10,
+                  maxLines: 5,
                   cursorColor: Color(DoryColors.textColor),
-                  decoration:  InputDecoration(
+                  decoration:  const InputDecoration(
                     focusColor: Colors.white,
-                    border: UnderlineInputBorder(
-                    ),
                   ),
                 ),
               ],
